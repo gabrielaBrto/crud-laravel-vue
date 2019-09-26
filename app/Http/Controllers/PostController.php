@@ -4,14 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Http\Resources\PostCollection;
+use App\Http\Resources\PostColletion;
 use App\Post;
 
 class PostController extends Controller
 {
 
     public function index(){
-        return new PostCollection(Post::all());
+        return new PostColletion(Post::all());
     }
 
     public function store(Request $request){

@@ -10,9 +10,10 @@
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Item Name</th>
-                        <th>Item Price</th>
-                        <th>Actions</th>
+                        <th>Titulo</th>
+                        <th>Conteudo</th>
+                        <th>Editar</th>
+                        <th>Deletar</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -20,8 +21,8 @@
                         <td>{{ post.id }}</td>
                         <td>{{ post.title }}</td>
                         <td>{{ post.body }}</td>
-                         <td><router-link :to="{name: 'edit', params: { id: post.id }}" class="btn btn-primary">Edit</router-link></td>
-                        <td><button class="btn btn-danger" @click.prevent="deletePost(post.id)">Delete</button></td>
+                         <td><router-link :to="{name: 'edit', params: { id: post.id }}" class="btn btn-warning">Editar</router-link></td>
+                        <td><button class="btn btn-danger" @click.prevent="deletePost(post.id)">Deletar</button></td>
                     </tr>
                 </tbody>
             </table>
@@ -38,7 +39,7 @@
         },
 
     created() {
-      let uri = 'http://192.168.2.89/crud.test/api/posts';
+      let uri = 'http://localhost:8000/api/posts';
       this.axios.get(uri).then(response => {
         this.posts = response.data.data;
       });
@@ -46,8 +47,9 @@
     methods: {
       deletePost(id)
       {
-        let uri = `http://192.168.2.89/crud.test/api/post/delete/${id}`;
+        let uri = `http://localhost:8000/api/post/delete/${id}`;
         this.axios.delete(uri).then(response => {
+            
           this.posts.splice(this.posts.indexOf(id), 1);
         });
       }

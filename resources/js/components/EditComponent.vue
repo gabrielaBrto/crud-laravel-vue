@@ -33,7 +33,7 @@
         },
 
         created() {
-            let uri = `http://192.168.2.89/crud.teste/api/post/edit/${this.$route.params.id}`;
+            let uri = `http://localhost:8000/api/post/edit/${this.$route.params.id}`;
             this.axios.get(uri).then((response) => {
                 this.post = data.response
             });
@@ -41,7 +41,7 @@
 
         methods: {
             updatePost(){
-                let uri = `http://192.168.2.89/crud.teste/api/post/update/${this.$route.params.id}`;
+                let uri = `http://localhost:8000/api/post/update/${this.$route.params.id}`;
                 this.axios.post(uri, this.post).then((response) => {
                     this.$router.push({name: 'posts'})
                 });

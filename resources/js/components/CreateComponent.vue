@@ -35,7 +35,7 @@
 
         methods: {
             addPost(){
-                let url = 'http://192.168.2.89/crud/public/api/post/create';
+                let url = 'http://localhost:8000/public/api/post/create';
                 this.axios.post(url, this.post).then((response) => {
                     this.$router.push({ name: 'posts' })
                 });
